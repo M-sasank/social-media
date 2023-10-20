@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { CgMoreAlt } from "react-icons/cg";
 import { SiGoogleanalytics } from "react-icons/si";
@@ -6,8 +6,24 @@ import { FiShare } from "react-icons/fi";
 import { AiOutlineRetweet, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 
+
 const Tweet = (props) => {
   const [like, setLike] = useState(false);
+  const [timeSpent, setTimeSpent] = useState(0);
+  const [enterTime, setEnterTime] = useState(null);
+
+  const handleMouseEnter = () => {
+    setEnterTime(Date.now());
+    console.log("Pointer Entered!")
+  };
+
+  const handleMouseLeave = () => {
+    if (enterTime) {
+      const elapsedTime = Date.now() - enterTime;
+      setTimeSpent(timeSpent + elapsedTime); // Update the total time spent
+    }
+    console.log("Pointer Left!")
+  };
 
   const likeHandler = () => {
     if (like === false) {
