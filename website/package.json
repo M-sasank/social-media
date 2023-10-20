@@ -1,7 +1,6 @@
 {
   "name": "website",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
   "dependencies": {
     "@spheron/storage": "^2.0.3",
